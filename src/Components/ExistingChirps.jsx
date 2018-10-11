@@ -5,7 +5,8 @@ import Avatar from './IMG_0021.JPG';
 const ExistingChirps = (props) => {
     return (
         <React.Fragment>
-            <div class="card" style={{width: '18rem', alignItems: 'center', display: 'flex', justifyContent: 'center', textAlign: 'center' }}>
+        <div className="d-flex align-items-center justify-content-around ">
+            <div class="card align-items-center justify-content-center" style={{width: '18rem', textAlign: 'center' }}>
                 <img 
                     class="card-img-top"
                     alt="Avatar" 
@@ -17,7 +18,7 @@ const ExistingChirps = (props) => {
                 </div>
             </div>
 
-            <div class="card" style={{width: '18rem', alignItems: 'center', display: 'flex', justifyContent: 'center', textAlign: 'center' }}>
+            <div class="card align-items-center justify-content-center" style={{width: '18rem', textAlign: 'center' }}>
                 <img 
                     class="card-img-top"
                     alt="Avatar" 
@@ -29,7 +30,7 @@ const ExistingChirps = (props) => {
                 </div>
             </div>
 
-            <div class="card" style={{width: '18rem', alignItems: 'center', display: 'flex', justifyContent: 'center', textAlign: 'center' }}>
+            <div class="card align-items-center justify-content-center" style={{width: '18rem', textAlign: 'center' }}>
                 <img 
                     class="card-img-top"
                     alt="Avatar"
@@ -40,7 +41,7 @@ const ExistingChirps = (props) => {
                     <p class="card-text">I still can't figure it out, but life wont always be like this!!!!!!</p>
                 </div>
             </div>
-
+        </div>
 
         </React.Fragment>
 

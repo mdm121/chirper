@@ -1,72 +1,67 @@
 import React from 'react';
-import NewChirps from './NewChirps';
-import ExistingChirps from './ExistingChirps';
-import PostChirp from './PostChirp';
+import Input from './Input';
+import Timeline from './Timeline';
 
 class Chirp extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            chirps: [],
-            name: '@SirChirpsALOT',
-            text: ''
-        };
+            chirps: [
+               { id: 1, text: 'Hit me on my Nextel Chirp' },
+               { id: 2, text: 'This lab is really hard.' },
+               { id: 3, text: "I still can't figure it out, but life wont always be like this!!!!!!" }],
+            name: '@SirChirpsALOT',           
+        }
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(event) {
+        console.log(event.target.value);
         this.setState({text: event.target.value});
     }
     
     makeHeader() {
-        return <h1>hello world</h1>
+        return (
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">C H I R P E R</h1>
+                    <p class="lead">Hello World!! Welcome to Chirper... the world renowned blogging app!!</p>
+                </div>
+            </div>
+        )
     }
 
     handleSubmit(event) {
         // alert('A name was submitted: ' + this.state.text);
         event.preventDefault();
-
-        let postText = this.state.text;
-        console.log(postText);
-        this.setState({text: ''});
-
-        return postText;
-    }
-
-    postChirp() {
-
+        this.setState({
+            chirps: [ 
+                ...this.state.chirps,
+                { text: this.state.text, id: this.state.chirps.length + 1 }],
+            text: ''
+            }
+        )
+        console.log('current', this.state.text);
     }
 
     render() {
         return (
             <React.Fragment>
                 {this.makeHeader()}
-                <form onSubmit={this.handleSubmit}>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">NEW CHIRP:</label>
-                        <input 
-                            type="text" 
-                            value={this.state.text} 
-                            onChange={this.handleChange} 
-                            class="form-control" id="textInput" aria-describedby="chirpHelp" 
-                            placeholder="Type your chirp here" />
-                        <small id="chirpHelp" class="form-text text-muted">Tell us what's on your mind!</small>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary" id="submit">Submit</button>
-                </form>
 
-                <ExistingChirps name={this.state.name}/>
-                
-                <NewChirps name={this.state.name} chirps={this.state.chirps} />
+                <Input
+                    handleChange={this.handleChange}
+                    handleSubmit={this.handleSubmit}
+                    name={this.state.name}
+                    value={this.state.text}
+                />
+                <Timeline name={this.state.name} chirps={this.state.chirps} />
             </React.Fragment>
-        );
+        )
     }
-
-
 }
 
 export default Chirp;
